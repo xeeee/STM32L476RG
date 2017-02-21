@@ -33,6 +33,7 @@
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
 #define __MAIN_H
+
   /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
@@ -40,6 +41,16 @@
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
+
+/* ########################## Module Declarations ########################### */
+
+/* Includes ------------------------------------------------------------------*/
+#include "stm32l4xx_hal.h"
+#include "stdbool.h"
+#include "stdint.h"
+#include "LIS2DH.h"
+
+
 
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC

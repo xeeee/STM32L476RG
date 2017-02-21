@@ -35,15 +35,24 @@
 #include "stm32l4xx_hal.h"
 #include "i2c.h"
 #include "gpio.h"
+#include "stdbool.h"
+#include "LIS2DH.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-uint8_t val;
+
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+#define ACC_DEFAULT_ADDRESS 	0x19
+#define FRAM_DEFAULT_ADDRESS 	0x53
+
+uint8_t ACC_ADDRESS, FRAM_ADDRESS;
+bool boot_check = 1;
+
+
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE END PV */
@@ -80,35 +89,31 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
 
+
+
   /* USER CODE BEGIN 2 */
-  uint8_t data = 0x00;
-  //uint8_t addr = 0b1010011;	//MEMORIA
-  uint8_t addr = 0b0011001;	// ACC
-  addr = (uint8_t) addr << 1 | 0x00;
-  /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
+  ACC_ADDRESS = (uint8_t) ACC_DEFAULT_ADDRESS << 1 | 0x00;
+
+  while(boot_check)
   {
-  /* USER CODE END WHILE */
-
-	 data = 0;
-
-	 val = HAL_I2C_IsDeviceReady(&hi2c1,addr,5,100);
-
-		 if (HAL_I2C_Mem_Read(&hi2c1, addr, 0x0F, I2C_MEMADD_SIZE_8BIT, &data, 3, 10) != HAL_OK)
-		 {
-			 data = 0xFF;
-		 }
-
-		  HAL_I2C_Mem_Read(&hi2c1, addr, 0x0F, I2C_MEMADD_SIZE_8BIT, &data, 3, 10);
-
-
-  /* USER CODE BEGIN 3 */
-
+	  if (HAL_I2C_IsDeviceReady(&hi2c1,ACC_ADDRESS,1,10) == HAL_OK)
+	  {
+		  uint8_t ACC_ID;
+		  HAL_I2C_Mem_Read(&hi2c1, ACC_ADDRESS, LIS2DH_WHO_AM_I, I2C_MEMADD_SIZE_8BIT, &ACC_ID, 1, 10);
+		  if(ACC_ID == LIS2DH_I_AM_MASK) boot_check = 0;
+	  }
   }
-  /* USER CODE END 3 */
+
+  //ACC_Init();
+
+	while (1)
+	{
+
+
+
+	}
+
 
 }
 
