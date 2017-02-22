@@ -65,7 +65,7 @@ float Alt;
 
 char *lat_sign, lat_formated[18];
 char *long_sign, long_formated[18];
-char alt_formated[9];
+char alt_formated[30];
 
 /* USER CODE END PV */
 
@@ -117,7 +117,6 @@ int main(void)
 	  if(UartReady == SET)
 	  {
 		  UartReady = RESET;
-		  HAL_Delay(500);
 
 		  //token = strtok(msg, ",");		// DEMO Message
 		  token = strtok(GGA, ",");		// UART Message
@@ -166,6 +165,7 @@ HAL_UART_RxCpltCallback(UART_HandleTypeDef*UartHandle)
 {
 	UartReady = SET;
 }
+
 
 
 
