@@ -6,18 +6,18 @@ http://www.st.com/web/en/resource/technical/document/datasheet/DM00042751.pdf
 * Changelog:
 *     ... - ongoing development release
 
-* NOTE: THIS IS ONLY A PARIAL RELEASE. 
-* THIS DEVICE CLASS IS CURRENTLY UNDERGOING ACTIVE DEVELOPMENT AND IS MISSING MOST FEATURES. 
+* NOTE: THIS IS ONLY A PARIAL RELEASE.
+* THIS DEVICE CLASS IS CURRENTLY UNDERGOING ACTIVE DEVELOPMENT AND IS MISSING MOST FEATURES.
 * PLEASE KEEP THIS IN MIND IF YOU DECIDE TO USE THIS PARTICULAR CODE FOR ANYTHING.
 */
 
-#ifndef _LIS2DH_H_
-#define _LIS2DH_H_
-#ifdef __cplusplus
- extern "C" {
-#endif
+#ifndef LIS2DH_H_
+#define LIS2DH_H_
+
+
 
 #include "main.h"
+
 
 //Registers
 #define LIS2DH_STATUS_REG_AUX 	0x07
@@ -46,7 +46,7 @@ http://www.st.com/web/en/resource/technical/document/datasheet/DM00042751.pdf
 #define LIS2DH_INT1_SOURCE 		0x31
 #define LIS2DH_INT1_THS 		0x32
 #define LIS2DH_INT1_DURATION 	0x33
-#define LIS2DH_INT_CFG 			0x34
+#define LIS2DH_INT2_CFG 		0x34
 #define LIS2DH_INT2_SOURCE 		0x35
 #define LIS2DH_INT2_THS 		0x36
 #define LIS2DH_INT2_DURATION 	0x37
@@ -208,15 +208,9 @@ http://www.st.com/web/en/resource/technical/document/datasheet/DM00042751.pdf
  /* ########################## Module Functions ############################## */
 
  /* Public Functions ----------------------------------------------------------*/
- void ACC_Init(void);
+ void ACC_Init(uint8_t ACC_ADDRESS);
  /* Private Functions ---------------------------------------------------------*/
 
  /* ########################################################################## */
 
-
-
-
-#ifdef __cplusplus
-}
-#endif
-#endif /* _LIS2DH_H_ */
+#endif /* LIS2DH_H_ */

@@ -1,13 +1,5 @@
 #MicroXplorer Configuration settings - do not modify
 File.Version=6
-I2C1.Analog_Filter=I2C_ANALOGFILTER_DISABLE
-I2C1.GeneralCallMode=I2C_GENERALCALL_ENABLE
-I2C1.I2C_Fall_Time=100
-I2C1.I2C_Rise_Time=100
-I2C1.I2C_Speed_Mode=I2C_Fast
-I2C1.IPParameters=Timing,I2C_Speed_Mode,I2C_Rise_Time,I2C_Fall_Time,GeneralCallMode,Analog_Filter,OwnAddress
-I2C1.OwnAddress=24
-I2C1.Timing=0x00F12D85
 KeepUserPlacement=false
 Mcu.Family=STM32L4
 Mcu.IP0=I2C1
@@ -128,7 +120,7 @@ ProjectManager.ProjectFileName=STM32-I2C.ioc
 ProjectManager.ProjectName=STM32-I2C
 ProjectManager.StackSize=0x400
 ProjectManager.TargetToolchain=SW4STM32
-ProjectManager.ToolChainLocation=/Users/fabiomonteiro/dev/workspace/STM32-I2C
+ProjectManager.ToolChainLocation=/Users/fabiomonteiro/dev/workspace/STM32L476RG/STM32-I2C
 ProjectManager.UnderRoot=false
 ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL,2-SystemClock_Config-RCC-false-HAL,3-MX_I2C1_Init-I2C1-false-HAL
 RCC.ADCFreq_Value=64000000

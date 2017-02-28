@@ -33,24 +33,18 @@
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
 #define __MAIN_H
-
   /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
+#include "stdint.h"
+#include "LIS2DH.h"
+extern const int ACC_DEFAULT_ADDRESS;
+extern const int FRAM_DEFAULT_ADDRESS;
+
 
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
-
-/* ########################## Module Declarations ########################### */
-
-/* Includes ------------------------------------------------------------------*/
-#include "stm32l4xx_hal.h"
-#include "stdbool.h"
-#include "stdint.h"
-#include "LIS2DH.h"
-
-
 
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
@@ -67,6 +61,8 @@
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
+
+
 
 /* USER CODE END Private defines */
 

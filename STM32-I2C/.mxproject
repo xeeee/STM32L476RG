@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=/Users/fabiomonteiro/dev/workspace/STM32-I2C/Inc
+HeaderPath=/Users/fabiomonteiro/dev/workspace/STM32L476RG/STM32-I2C/Inc
 HeaderFiles=gpio.h;i2c.h;stm32l4xx_it.h;stm32l4xx_hal_conf.h;main.h;
-SourcePath=/Users/fabiomonteiro/dev/workspace/STM32-I2C/Src
+SourcePath=/Users/fabiomonteiro/dev/workspace/STM32L476RG/STM32-I2C/Src
 SourceFiles=gpio.h;i2c.h;stm32l4xx_it.h;stm32l4xx_hal_conf.h;main.h;gpio.c;i2c.c;stm32l4xx_it.c;stm32l4xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]

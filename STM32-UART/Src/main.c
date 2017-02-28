@@ -59,9 +59,9 @@ char msg[] = "$GPGGA,205248.0,4006.537275,N,00815.118653,E,1,04,1.7,116.8,M,55.0
 char GGA[77];
 char *token;
 
-float Lat;
-float Long;
-float Alt;
+double Lat;
+double Long;
+double Alt;
 
 char *lat_sign, lat_formated[18];
 char *long_sign, long_formated[18];
