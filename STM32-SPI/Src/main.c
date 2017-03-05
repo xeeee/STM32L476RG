@@ -190,8 +190,9 @@ int main(void)
 		MAX2_CRC_OK = crcSmallCheck16(MAX2_OUT_FaultBits, MAX2_OUT_StatusBits, MAX2_OUT_CRC);
 
 
-	    /* Insert ms delay */
+	    //Insert ms delay
 	    Delay(5000);
+
 
 
 
@@ -300,7 +301,7 @@ uint8_t checkCRC(uint8_t inputs)
 
 	for (i=0; i<5; ++i)		nCRC[i] = 0;                    // Init before calculation
 
-	for (i=0; i<strlen(BitString); ++i)
+	for (i=0; i<8; ++i)
 	{
 		DoInvert = ('1'==BitString[i]) ^ nCRC[4];         // XOR required?
 
@@ -311,7 +312,7 @@ uint8_t checkCRC(uint8_t inputs)
 		nCRC[0] = DoInvert;
 	}
 
-	for (i=5; i>=0; i--)	Res = (uint8_t) (Res << 1) | nCRC[i];
+	for (i=4; i>=0; i--)	Res = (uint8_t) (Res << 1) | nCRC[i];
 
 	return(Res);
 }
