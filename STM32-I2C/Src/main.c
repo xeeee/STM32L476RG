@@ -37,8 +37,9 @@
 #include "gpio.h"
 #include "LIS2DH.h"
 
+
 /* USER CODE BEGIN Includes */
-#include "stdbool.h"
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -48,7 +49,7 @@ const int ACC_DEFAULT_ADDRESS  = 0b0011001;
 
 uint8_t ACC_ADDRESS;
 uint8_t FRAM_ADDRESS;
-bool boot_check = 1;
+
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -88,16 +89,7 @@ int main(void)
   MX_I2C1_Init();
 
   /* USER CODE BEGIN 2 */
-  ACC_ADDRESS = (uint8_t) ACC_DEFAULT_ADDRESS << 1 | 0x00;
-  while(boot_check)
-  {
-	  if (HAL_I2C_IsDeviceReady(&hi2c1,ACC_ADDRESS,1,10) == HAL_OK)
-	  {
-		  uint8_t ACC_ID;
-		  HAL_I2C_Mem_Read(&hi2c1, ACC_ADDRESS, LIS2DH_WHO_AM_I, I2C_MEMADD_SIZE_8BIT, &ACC_ID, 1, 10);
-		  if(ACC_ID == 0x33) boot_check = 0;
-	  }
-  }
+
 
   ACC_Init(ACC_ADDRESS);
 
@@ -105,10 +97,20 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+uint8_t interrupt1 = 0x00;
+uint8_t interrupt2 = 0x00;
   while (1)
   {
   /* USER CODE END WHILE */
+	  HAL_I2C_Mem_Read(&hi2c1, ACC_ADDRESS, LIS2DH_INT1_SOURCE, I2C_MEMADD_SIZE_8BIT, &interrupt1, 1, 10);
+	  HAL_I2C_Mem_Read(&hi2c1, ACC_ADDRESS, LIS2DH_INT2_SOURCE, I2C_MEMADD_SIZE_8BIT, &interrupt2, 1, 10);
+	  if (interrupt1 != 0x00 || interrupt2 != 0x00)
+	  {
+		  HAL_Delay(100);
+
+	  }
 	  HAL_Delay(500);
+	  //ACC_Read(ACC_ADDRESS);
   /* USER CODE BEGIN 3 */
 
   }
